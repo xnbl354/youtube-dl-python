@@ -7,6 +7,8 @@
 import moviepy.editor
 from pytube import YouTube, Playlist
 
+# System Color
+cyan  = '\x1b[36m'
 
 # ========================================= MAIN CODE =========================================   #
 
