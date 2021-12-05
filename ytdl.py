@@ -1,0 +1,48 @@
+# Source Code : X - Nabil354
+# github.com/nabilhnzm354
+
+# instalation #
+# pip install -r require.txt
+
+import moviepy.editor
+from pytube import YouTube, Playlist
+
+
+# ========================================= MAIN CODE =========================================   #
+
+def DownladerYt():
+    print('\n\n=================================YOUTUBE SERVER DOWNLOADER======================================\n\n[1]. PlayList\n[2]. Audio\n[3]. Video\n')
+    choose = input('Choose Your Type : ')
+    if choose=='playlist':
+        urlPlaylist = input('Masukkan URL Youtube Playlist : ')
+        playlist = Playlist(urlPlaylist)
+        print('Total Videos In PLaylist : %s' % len(playlist.video_urls))
+        for video_url in playlist.video_urls:
+            print('\n\n' + video_url)
+        print('\n\nDone...')
+    elif choose=='Audio':
+        urlVideo = input('Masukkan URL Youtube Video : ')
+        queryTitle = input('Input Name For Audio : ')
+        yt = YouTube(urlVideo)
+        result = yt.streams.get_highest_resolution().download('download')
+        video = moviepy.editor.VideoFileClip(result)
+        audio = video.audio
+
+        audio.write_audiofile(queryTitle + '.mp3')
+        print('Done...')
+    elif choose=='Video':
+        urlVideo = input('Masukkan URL Youtube Video : ')
+        yt = YouTube(urlVideo)
+        yt.streams.get_highest_resolution().download('download')
+        print('Done...')
+    else:
+      print('Gabener Anjing')
+      
+# DEFAULT SYSTEM MAIN
+if __name__=="__main__":
+    while True:
+        try:
+            DownladerYt()
+        except KeyboardInterrupt:
+                print('{}\nOke Byeee....'.format(cyan))
+                exit()
