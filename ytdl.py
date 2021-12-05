@@ -13,16 +13,16 @@ cyan  = '\x1b[36m'
 # ========================================= MAIN CODE =========================================   #
 
 def DownladerYt():
-    print('\n\n=================================YOUTUBE SERVER DOWNLOADER======================================\n\n[1]. PlayList\n[2]. Audio\n[3]. Video\n')
+    print('\n\n=================================YOUTUBE SERVER DOWNLOADER======================================\n\nList Server :\n[1]. PlayList\n[2]. Audio\n[3]. Video\n Example : 1')
     choose = input('Choose Your Type : ')
-    if choose=='playlist':
+    if choose=='1':
         urlPlaylist = input('Masukkan URL Youtube Playlist : ')
         playlist = Playlist(urlPlaylist)
         print('Total Videos In PLaylist : %s' % len(playlist.video_urls))
         for video_url in playlist.video_urls:
             print('\n\n' + video_url)
         print('\n\nDone...')
-    elif choose=='Audio':
+    elif choose=='2':
         urlVideo = input('Masukkan URL Youtube Video : ')
         queryTitle = input('Input Name For Audio : ')
         yt = YouTube(urlVideo)
@@ -32,7 +32,7 @@ def DownladerYt():
 
         audio.write_audiofile(queryTitle + '.mp3')
         print('Done...')
-    elif choose=='Video':
+    elif choose=='3':
         urlVideo = input('Masukkan URL Youtube Video : ')
         yt = YouTube(urlVideo)
         yt.streams.get_highest_resolution().download('download')
